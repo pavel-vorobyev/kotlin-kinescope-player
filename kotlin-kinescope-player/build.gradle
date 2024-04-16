@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        versionName "1.0.3"
+        versionName "1.0.9"
     }
 
     buildTypes {
@@ -63,36 +63,15 @@ configurations.all {
     }
 }
 
-def LIB_GROUP_ID = 'com.github.pavel-vorobyev'
-def LIB_ARTIFACT_ID = 'kotlin-kinescope-player'
-def LIB_VERSION = '1.0.3'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
-}
-publishing {
-    repositories {
-        maven {
-            name = 'Jitpack'
-            url = "file://${buildDir}/repo"
-        }
-    }
-    publications {
-        release(MavenPublication) {
-            groupId LIB_GROUP_ID
-            artifactId LIB_ARTIFACT_ID
-            version LIB_VERSION
-            artifact("$buildDir/outputs/aar/kotlin-kinescope-player-release.aar")
-            artifact(sourceJar)
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-                configurations.api.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
-                }
+                groupId = 'com.github.pavel-vorobyev'
+                artifactId = 'kotlin-kinescope-player'
+                version = "1.0.9"
             }
         }
     }
