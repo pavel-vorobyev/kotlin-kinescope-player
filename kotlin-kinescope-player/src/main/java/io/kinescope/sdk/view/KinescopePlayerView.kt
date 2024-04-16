@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -34,6 +35,7 @@ import androidx.media3.ui.PlayerControlView
 import androidx.media3.ui.PlayerView
 import androidx.media3.ui.TimeBar
 import com.bumptech.glide.Glide
+import io.kinescope.sdk.BuildConfig
 import io.kinescope.sdk.R
 import io.kinescope.sdk.analytics.KinescopeAnalyticsManager
 import io.kinescope.sdk.extensions.currentVolumeInPercent
@@ -409,6 +411,9 @@ class KinescopePlayerView(
         applyKinescopePlayerOptions()
         applyExoPlayerVisibility()
         updateAll()
+
+        Toast.makeText(context, "I'm from ${BuildConfig.VERSION_NAME} version", Toast.LENGTH_SHORT)
+            .show()
     }
 
     fun enableLiveState(

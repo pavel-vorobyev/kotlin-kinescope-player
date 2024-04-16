@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
@@ -17,7 +19,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        versionName "1.1.0"
+        versionName "1.1.1"
     }
 
     buildTypes {
@@ -43,7 +45,11 @@ android {
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.14.0'
+        if (Os.isFamily(Os.FAMILY_MAC)) {
+            artifact = 'com.google.protobuf:protoc:3.14.0:osx-x86_64'
+        } else {
+            artifact = 'com.google.protobuf:protoc:3.14.0'
+        }
     }
 
     generateProtoTasks {
@@ -71,7 +77,7 @@ afterEvaluate {
 
                 groupId = 'com.github.pavel-vorobyev'
                 artifactId = 'kotlin-kinescope-player'
-                version = "1.1.0"
+                version = "1.1.1"
             }
         }
     }
