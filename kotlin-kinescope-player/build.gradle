@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        versionName "1.0.9"
+        versionName "1.1.0"
     }
 
     buildTypes {
@@ -71,7 +71,7 @@ afterEvaluate {
 
                 groupId = 'com.github.pavel-vorobyev'
                 artifactId = 'kotlin-kinescope-player'
-                version = "1.0.9"
+                version = "1.1.0"
             }
         }
     }
