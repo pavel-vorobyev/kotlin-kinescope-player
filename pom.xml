@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <link id="dark-mode-custom-link" rel="stylesheet" type="text/css" />
+    <link id="dark-mode-general-link" rel="stylesheet" type="text/css" />
+    <style id="dark-mode-custom-style" lang="en" type="text/css" />
+    <style id="dark-mode-native-style" lang="en" type="text/css" />
+    <style id="dark-mode-native-sheet" lang="en" type="text/css" />
+    <script />
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.pavel-vorobyev</groupId>
     <artifactId>kotlin-kinescope-player</artifactId>
-    <version>1.0.4</version>
-    <packaging>jar</packaging>
+    <version>1.0.5</version>
+    <packaging>aar</packaging>
+    <description>POM was created from install:install-file</description>
 </project>
