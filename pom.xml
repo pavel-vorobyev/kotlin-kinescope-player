@@ -6,5 +6,5 @@
     <groupId>com.github.pavel-vorobyev</groupId>
     <artifactId>kotlin-kinescope-player</artifactId>
     <version>1.0.4</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 </project>
