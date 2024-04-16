@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        versionName "1.1.3"
+        versionName "1.1.4"
     }
 
     buildTypes {
@@ -43,7 +43,8 @@ android {
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.14.0'
+        artifact = 'com.google.protobuf:protoc:3.14.0:osx-x86_64'
+//        artifact = 'com.google.protobuf:protoc:3.14.0'
     }
 
     generateProtoTasks {
@@ -65,14 +66,14 @@ afterEvaluate {
 
                 groupId = 'com.github.pavel-vorobyev'
                 artifactId = 'kotlin-kinescope-player'
-                version = "1.1.3"
+                version = "1.1.4"
             }
         }
     }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.7.21'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
 
