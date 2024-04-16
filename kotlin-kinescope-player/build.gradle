@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
     id "com.google.protobuf" version "0.8.17"
+    id "maven-publish"
 }
 
 android {
@@ -16,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        versionName "0.0.1"
+        versionName "1.0.3"
     }
 
     buildTypes {
@@ -59,6 +60,41 @@ protobuf {
 configurations.all {
     resolutionStrategy {
         force("com.google.protobuf:protobuf-java:3.25.3")
+    }
+}
+
+def LIB_GROUP_ID = 'com.github.pavel-vorobyev'
+def LIB_ARTIFACT_ID = 'kotlin-kinescope-player'
+def LIB_VERSION = '1.0.3'
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+publishing {
+    repositories {
+        maven {
+            name = 'Jitpack'
+            url = "file://${buildDir}/repo"
+        }
+    }
+    publications {
+        release(MavenPublication) {
+            groupId LIB_GROUP_ID
+            artifactId LIB_ARTIFACT_ID
+            version LIB_VERSION
+            artifact("$buildDir/outputs/aar/kotlin-kinescope-player-release.aar")
+            artifact(sourceJar)
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.api.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }
     }
 }
 
